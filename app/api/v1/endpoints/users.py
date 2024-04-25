@@ -1,10 +1,19 @@
+from datetime import timedelta
+from typing import List
 from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 
 from app.api.schemas.user import UserCreate, UserRead, UserUpdate, Token
 from app.api.v1.models.user import User
+from app.core.config import Settings
 from app.core.database import get_db
-from app.core.security import get_current_user, get_password_hash, create_access_token
+from app.core.security import (
+    get_current_user,
+    get_password_hash,
+    create_access_token,
+    verify_password,
+)
 
 router = APIRouter()
 
@@ -39,7 +48,7 @@ def login_access_token(
         raise HTTPException(status_code=400, detail="Incorrect email or password")
 
     # Crear el token de acceso
-    access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token_expires = timedelta(minutes=Settings.ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(
         data={"sub": db_user.email}, expires_delta=access_token_expires
     )

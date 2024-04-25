@@ -29,4 +29,4 @@ class PostRead(PostBase):
     tags: List[TagRead] = []
 
     class Config:
-        orm_mode = True
+        from_attributes = True
