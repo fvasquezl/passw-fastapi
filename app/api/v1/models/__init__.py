@@ -1,0 +1,1 @@
+https://github.com/amenck/circular_import_refactor/tree/test-imports-from-source/objects
