@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     SERVER_PORT: int = 8000
 
     # Configuración de la base de datos
-    DATABASE_URL: str = "sqlite:///./db.sqlite3"
+    DATABASE_URL: str = "sqlite:///./test.db"
 
     # Configuración de seguridad
     SECRET_KEY: str

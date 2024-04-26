@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import Optional, List
 
-from .category import CategoryRead
+from .category import Category
 from .tag import TagRead
 
 
@@ -25,7 +25,7 @@ class PostUpdate(PostBase):
 class PostRead(PostBase):
     id: int
     owner_id: int
-    category: CategoryRead
+    category: Category
     tags: List[TagRead] = []
 
     class Config:

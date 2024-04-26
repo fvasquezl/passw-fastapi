@@ -25,3 +25,8 @@ sqlalchemy==2.0.29; python_version >= '3.7'
 starlette==0.37.2; python_version >= '3.8'
 typing-extensions==4.11.0; python_version >= '3.8'
 uvicorn==0.29.0; python_version >= '3.8'
+
+fastapi~=0.110.2
+SQLAlchemy~=2.0.29
+pydantic~=2.7.1
+uvicorn~=0.29.0
