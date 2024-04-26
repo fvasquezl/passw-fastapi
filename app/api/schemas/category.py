@@ -9,12 +9,8 @@ class CategoryCreate(CategoryBase):
     pass
 
 
-class CategoryUpdate(CategoryBase):
-    pass
-
-
-class CategoryRead(CategoryBase):
+class Category(CategoryBase):
     id: int
 
     class Config:
-        from_attributes = True
+        orm_mode = True

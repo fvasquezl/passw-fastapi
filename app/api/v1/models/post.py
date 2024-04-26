@@ -1,4 +1,3 @@
-from __future__ import annotations
 from datetime import datetime
 from typing import List
 from sqlalchemy import Index, Integer, String, ForeignKey, DateTime
@@ -6,18 +5,16 @@ from sqlalchemy.orm import registry, Mapped, mapped_column, relationship
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
 
-# from app.api.v1.models.user import User
+from app.api.v1.models.user import User
+
 from app.api.v1.models.category import Category
 from app.api.v1.models.tag import Tag
-import app.api.v1.models.post_tags
+import app.api.v1.models.post_tag
 
 
 from app.core.database import Base
 
-# mapper_registry = registry()
 
-
-# @mapper_registry.mapped
 class Post(Base):
     __tablename__ = "posts"
 
@@ -34,8 +31,8 @@ class Post(Base):
     )
 
     # Relaciones
-    # owner: Mapped["User"] = relationship(back_populates="posts")
-    category: Mapped["Category"] = relationship(back_populates="posts")
-    tags: Mapped[List["Tag"]] = relationship(
+    owner: Mapped[User] = relationship(back_populates="posts")
+    category: Mapped[Category] = relationship(back_populates="posts")
+    tags: Mapped[List[Tag]] = relationship(
         secondary="post_tags", back_populates="posts"
     )

@@ -6,10 +6,7 @@ from app.api.v1.models.post import Post
 
 from app.core.database import Base
 
-# mapper_registry = registry()
 
-
-# @mapper_registry.mapped
 class Tag(Base):
     __tablename__ = "tags"
 

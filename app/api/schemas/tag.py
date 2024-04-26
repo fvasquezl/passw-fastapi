@@ -9,12 +9,8 @@ class TagCreate(TagBase):
     pass
 
 
-class TagUpdate(TagBase):
-    pass
-
-
-class TagRead(TagBase):
+class Tag(TagBase):
     id: int
 
     class Config:
-        from_attributes = True
+        orm_mode = True

@@ -3,10 +3,7 @@ from sqlalchemy.orm import registry, Mapped, mapped_column
 
 from app.core.database import Base
 
-# mapper_registry = registry()
 
-
-# @mapper_registry.mapped
 class Category(Base):
     __tablename__ = "categories"
 

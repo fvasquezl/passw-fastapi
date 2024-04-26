@@ -1,32 +1,28 @@
 from pydantic import BaseModel
-from typing import Optional, List
-
-from .category import CategoryRead
-from .tag import TagRead
+from .category import Category
+from .tag import Tag
 
 
 class PostBase(BaseModel):
     title: str
     content: str
     category_id: int
+    tag_ids: list[int] = []
 
 
 class PostCreate(PostBase):
-    tags: Optional[List[int]] = []
+    pass
 
 
-class PostUpdate(PostBase):
-    title: Optional[str] = None
-    content: Optional[str] = None
-    category_id: Optional[int] = None
-    tags: Optional[List[int]] = []
-
-
-class PostRead(PostBase):
+class Post(PostBase):
     id: int
-    owner_id: int
-    category: CategoryRead
-    tags: List[TagRead] = []
+    user_id: int
+    category: (
+        "Category"  # Importar el esquema Category para evitar importaciones circulares
+    )
+    tags: list["Tag"] = (
+        []
+    )  # Importar el esquema Tag para evitar importaciones circulares
 
     class Config:
-        from_attributes = True
+        orm_mode = True
